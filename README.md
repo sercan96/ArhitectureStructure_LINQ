@@ -39,7 +39,7 @@
 
 
 <p align="center">
-  <img src="https://github.com/sercan96/ArhitectureStructure_LINQ/assets/38535473/598d866a-e281-43ed-81ab-748f1330eec9" alt="Diagram">
+  <img src="https://github.com/sercan96/ArhitectureStructure_LINQ/assets/38535473/fe3ee131-ecfe-41f8-9a32-3c8933fb802c" alt="Diagram">
 </p>
 * If you pay attention to the Select method we created above, it was created as a generic method... In other words, it will do its job according to the type we specify where it is called... Normally, the task of this Select is to go to the relevant table in the database and return data of the type we want from there... What type of data do we use? We tell it what we want to return by specifying its generic type when calling Select...
 
