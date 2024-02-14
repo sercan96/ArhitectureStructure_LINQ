@@ -1,0 +1,31 @@
+﻿1 => Öncelikle katmanlarımızı (Project.ENTITIES,Project.CONF,Project.DAL,Project.BLL katmanlarını) Class Library(.Net Framework) olarak acıyoruz (Solution'imiza sag tıklayıp Add New Project diyerek)...UI katmanını hangi display'de istiyorsanız o platformda amalısınız...Bizim burada kullandıgımız Display Windows Forms App. olarak secilmiştir...
+
+Class Library olan projeleriniz calısabilecek projeler degildir...Bu projeler ilgili yapı canlıya cıktıgı zaman DLL' dönüsüp calısabilecek durumda olan projenin icerisine eklenen dosyalardır... Sizin calısabilecek tek yapınız UI katmanıdır... Bu yüzden hemen UI katmanımız olan projeyi Set As StartupProject olarak ayarlamalısınız.
+
+
+N-Tier
+
+-----ENTITIES Katmanı------
+
+*Veritabanında tabloya dönüsecek olan sınıflarımızı ve enum'larımız, varsa Interface'lerimizi icerecek olan katmandır
+
+
+-----CONF Katmanı-----
+*Veritabanı ayarlamalarınızı hazır bulundurup DAL'e gönderecek katmandır...
+
+
+
+
+
+
+---Sıra----
+
+1 => Önce Entities katmanına baslıyoruz...Entities katmanında veritabanında tablo olacak sınıflarımızın tasarlanması lazım...
+
+2 => CONF katmanına geciyoruz...CONF katmanında Veritabanı ayarlamaları yapacagımız icin Entity Framework'un bu katmana indirilmesi lazım...Bütün ayarlama işlemleri Entity Framework'ten gelir...Aynı zamanda bu katman Entities katmanındaki class'ları kullanmak istedigi icin Entities katmanından referans alır...İlgili referanslar alındıktan sonra Configuration class'larımız acılıyor...
+
+3 => DAL katmanında EF indirdik...Entities ve Conf katmanlarından referans aldık...Tam bu sırada Set as Startup olarak ayarlanmıs UI katmanımıza da EF indirdik...Ve oranın(WinUI'nin) app.config'ine adresimizi yazdık...Bu projeler icerisinde Set as Startup olarak ayarlanmıs olan projemizin config dosyası görüleceginden dolayı DAL katmanında COntext sınıfımızın constructor'indan ulasacagımız DbContext class'ının constructor'ina rahatca config dosyamız ismini verebildik(BUrada dikkat etmemiz gereken nokta kullanacagımız config dosyasının set as startup olarak aylanmıs katmanda bulunması...Bu, bizim icin UI katmanıdır)...Sonra test icin Package Manager Console'u actık...Burada dikkat etmeniz gereken şey Console'un hedefledigi projenin Context sınıfını iceren katman olması gerekliligidir...
+
+4 => BLL katmanına geciyoruz...EF indiriyoruz...Ve DAL katmanı ile ENTITIES katmanından referans alıyoruz...Sonra SingletonPattern'imizi yaratıyoruz...Sonra Generic Repository'e geciyoruz... Repository Interface'imiz ve class'larımız acılıyor...
+
+5 => UI katmanında BLL ve ENTITIES katmanlarından referans alıyoruz. Form'da Category ile ilgili Database işlemleri yapacagımızdan dolayı CategoryRepository kullanıyoruz...
