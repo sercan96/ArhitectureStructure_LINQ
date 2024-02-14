@@ -31,6 +31,9 @@
 
 # Making LinQ Queries With Generic Structures
 
+![image](https://github.com/sercan96/ArhitectureStructure_LINQ/assets/38535473/3ec609f3-2425-4237-b910-6f6392cf52a0)
+
+Üst taraftaki yarattıgımız Select metodu dikkat ederseniz generic bir metot olarak yaratılmıstır...Yani görevini cagrıldıgı yerde belirledigimiz tipe göre yapacaktır...Normalde bu Select'in görevi veritabanındaki ilgili tabloya gitmek ve oradan bizim istedigimiz tipte veri döndürmektir...Biz hangi tipte veri dönmesini istedigimizi ise Select'i cagırırken onun generic tipini belirleyerek söyleriz...,
 
 
 
